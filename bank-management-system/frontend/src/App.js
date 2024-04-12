@@ -1,10 +1,20 @@
-import React from "react";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import CreateCustomer from './Components/createCustomer';
+
 
 function App() {
+
   return (
-    <div>
-      <h1>Welcome to Bank Management System</h1>
-    </div>
+    <Router>
+      <div className='my-3'>
+
+        <Routes>
+          <Route path='/createCustomer' element={<CreateCustomer/>}/>
+        </Routes>
+        
+      </div>
+    </Router>
   );
 }
 
