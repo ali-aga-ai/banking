@@ -2,7 +2,7 @@ create database banking;
 
 use banking;
 
-create table banking.empolyee(
+create table banking.employee(
 	
     employee_id int primary key,
 	emp_role varchar(40),
