@@ -43,13 +43,17 @@ function AccountForm() {
         value={account.balance}
         onChange={handleChange}
       />
-      <input
-        type="text"
-        name="accType"
-        placeholder="Account Type"
-        value={account.accType}
-        onChange={handleChange}
-      />
+        <select
+    name="accType"
+    value={account.accType}
+    onChange={handleChange}
+  >
+    <option value="">Select Account Type</option>
+    <option value="Savings">Savings</option>
+    <option value="Checking">Checking</option>
+    <option value="Investment">Investment</option>
+  </select>
+
       <input
         type="number"
         name="interestRate"

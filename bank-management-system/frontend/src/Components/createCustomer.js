@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate  } from 'react-router-dom';
+
 
 function CustomerForm() {
+  const navigate = useNavigate();
+
   const [customer, setCustomer] = useState({ firstName: '', middleName: '', lastName: '', creditScore: '', address: '', contactNumber: '' });
 
   const handleChange = (e) => {
@@ -14,6 +18,8 @@ function CustomerForm() {
     try {
       await axios.post('http://localhost:5000/api/customers', customer);
       alert('Customer added successfully!');
+      navigate(`/welcomePage/${customer.firstName}`)
+
     } catch (error) {
       console.error('Error adding customer:', error);
       alert('Failed to add customer!');

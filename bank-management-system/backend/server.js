@@ -55,5 +55,37 @@ app.post('/api/accounts', (req, res) => {
     });
   });
 
+// Define API routes for handling card information
+app.post('/api/cards', (req, res) => {
+  const { cardNo, customerId, accountNo, cardType } = req.body;
+  const query = 'INSERT INTO card (card_no, customer_id, acc_no, card_type) VALUES (?, ?, ?, ?)';
+  pool.query(query, [cardNo, customerId, accountNo, cardType], (err, result) => {
+    if (err) {
+      console.error('Error inserting card:', err);
+      return res.status(500).json({ error: 'Failed to insert card' });
+    }
+    console.log('Card added successfully:', result);
+
+    res.status(201).json({ message: 'Card added successfully' });
+  });
+});
+
+
+// Define API route for handling loan applications
+app.post('/api/loans', (req, res) => {
+  const { customerId, amount, collateral, interest, timeMonths } = req.body;
+  const query = 'INSERT INTO loan (customer_id, amount, collateral, interest, time_months) VALUES (?, ?, ?, ?, ?)';
+  pool.query(query, [customerId, amount, collateral, interest, timeMonths], (err, result) => {
+    if (err) {
+      console.error('Error inserting loan:', err);
+      return res.status(500).json({ error: 'Failed to insert loan' });
+    }
+    console.log('Loan application submitted successfully:', result);
+
+    res.status(201).json({ message: 'Loan application submitted successfully' });
+  });
+});
+
+
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
