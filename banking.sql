@@ -270,10 +270,10 @@ INSERT INTO banking.transactions (transaction_no, acc_from, acc_to, transaction_
 (30, 30, 30, '2024-04-30', 300, 'Deposit');
 
 
---select * from customer
+--  select * from customer
 
 
---Procedures:
+-- Procedures:
 
 
 DELIMITER //
@@ -318,6 +318,6 @@ END;
 
 DELIMITER ;
 			
---Call transaction( 1000,1,2);
+-- Call transaction( 1000,1,2);
 
---loan Approval
+-- loan Approval
