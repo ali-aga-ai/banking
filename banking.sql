@@ -270,4 +270,106 @@ INSERT INTO banking.transactions (transaction_no, acc_from, acc_to, transaction_
 (30, 30, 30, '2024-04-30', 300, 'Deposit');
 
 
-select * from customer
+--select * from customer
+
+
+--Procedures:
+
+
+DELIMITER //
+
+CREATE PROCEDURE transaction( 
+    IN amount INT,
+    IN acc_from INT,
+    IN acc_to INT
+)
+BEGIN
+    DECLARE sender_balance INT;
+    DECLARE receiver_balance INT;
+    
+    SELECT balance INTO sender_balance
+    FROM account
+    WHERE account_no = acc_from;
+    
+    SELECT balance INTO receiver_balance
+    FROM account
+    WHERE account_no = acc_to;
+
+    IF amount > sender_balance THEN
+        SELECT 'Insufficient Balance' AS Result;
+    ELSE
+        START TRANSACTION;
+        
+        UPDATE account
+        SET balance = balance - amount 
+        WHERE account_no = acc_from;
+
+        UPDATE account
+        SET balance = balance + amount 
+        WHERE account_no = acc_to;
+
+        COMMIT;
+
+        SELECT 'Transaction Complete' AS Result;
+    END IF;
+    
+END;
+//
+
+DELIMITER ;
+			
+--Call transaction( 1000,1,2);
+
+--loan Approval
+DELIMITER //
+
+CREATE PROCEDURE loan_approval(
+    IN credit_score INT,
+    IN customer_id INT,    
+    IN amount INT,
+    IN collateral VARCHAR(30),
+    IN interest FLOAT,
+    IN time_months INT
+)
+BEGIN
+    IF credit_score >= 700 THEN
+        SELECT 'Approved' AS Result;
+        CALL new_loan(customer_id, amount, collateral, interest, time_months);
+    ELSE
+        SELECT 'Declined' AS Result;
+    END IF;
+END;
+//
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE new_loan(
+    IN customer_id INT,
+    IN amount INT,
+    IN collateral VARCHAR(30),
+    IN interest FLOAT,
+    IN time_months INT
+)
+BEGIN
+    DECLARE loan_num INT ;
+    Select count(*) loan into loan_num
+	from loan;
+    SET loan_num = loan_num + 1;
+    -- Insert into loan table
+    INSERT INTO banking.loan (loan_no, customer_id, amount, collateral, interest, time_months) 
+    VALUES (loan_num, customer_id, amount, collateral, interest, time_months);
+    
+    -- Update loan_num
+   
+    
+END;
+//
+
+DELIMITER ;
+
+
+--CALL loan_approval( 720, 24, 12000, 'Car', 4.5, 36);
+--CALL loan_approval( 730, 13, 24000, 'House', 3.2, 48);
