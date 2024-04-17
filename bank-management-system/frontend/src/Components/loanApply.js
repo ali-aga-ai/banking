@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 function LoanForm() {
-  const [loan, setLoan] = useState({ customerId: '', amount: '', collateral: '', interest: '', timeMonths: '' });
+  const [loan, setLoan] = useState({ username: '', password: '', amount: '', collateral: '', interest: '', timeMonths: '' });
+  const { username } = useParams();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -11,22 +13,35 @@ function LoanForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post('http://localhost:5000/api/loans', loan);
-      alert('Loan application submitted successfully!');
-    } catch (error) {
-      console.error('Error submitting loan application:', error);
-      alert('Failed to submit loan application!');
+    // Check if the provided username matches the username in the URL
+    if (username === loan.username) {
+      try {
+        await axios.post('http://localhost:5000/api/loans', loan);
+        alert('Loan application submitted successfully!');
+      } catch (error) {
+        console.error('Error submitting loan application:', error);
+        alert('Failed to submit loan application!');
+      }
+    } else {
+      // If the provided username doesn't match the one in the URL, show an error
+      alert('Username does not match the URL.');
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <input
-        type="number"
-        name="customerId"
-        placeholder="Customer ID"
-        value={loan.customerId}
+        type="text"
+        name="username"
+        placeholder="Username"
+        value={loan.username}
+        onChange={handleChange}
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={loan.password}
         onChange={handleChange}
       />
       <input

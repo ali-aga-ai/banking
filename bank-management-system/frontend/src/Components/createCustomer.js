@@ -6,7 +6,7 @@ import { useNavigate  } from 'react-router-dom';
 function CustomerForm() {
   const navigate = useNavigate();
 
-  const [customer, setCustomer] = useState({ firstName: '', middleName: '', lastName: '', creditScore: '', address: '', contactNumber: '' });
+  const [customer, setCustomer] = useState({ firstName: '', middleName: '', lastName: '', creditScore: '', address: '', contactNumber: '' , password:''});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -68,6 +68,13 @@ function CustomerForm() {
         name="contactNumber"
         placeholder="Contact Number"
         value={customer.contactNumber}
+        onChange={handleChange}
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={customer.password}
         onChange={handleChange}
       />
       <button type="submit">Add Customer</button>

@@ -12,12 +12,13 @@ function App() {
     <Router>
       <div className='my-3'>
         <Routes>
-          <Route path='/createCustomer' element={<CreateCustomer />} />
-          <Route path='/createAccount' element={<CreateAccount />} />
-          <Route path='/createCard' element={<CreateCard />} />
-          <Route path='/loanApply' element={<LoanApply />} />
-          <Route path='/transaction' element={<Transaction />} />
-          <Route path="/welcomePage/:username" element={<Dashboard />} />
+        <Route path='/createCustomer/:username' element={<CreateCustomer />} />
+        <Route path="/createAccount/:username" element={<CreateAccount />} />
+        <Route path='/createCard/:username' element={<CreateCard />} />
+        <Route path='/loanApply/:username' element={<LoanApply />} />
+        <Route path='/transaction/:username' element={<Transaction />} />
+        <Route path="/welcomePage/:username" element={<Dashboard />} />
+
         </Routes>
       </div>
     </Router>

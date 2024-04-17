@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import axios from 'axios';
 
 function AccountForm() {
-  const [account, setAccount] = useState({ accountNo: '', customerID: '', balance: '', accType: '', interestRate: '' });
+  const [account, setAccount] = useState({ f_name: '', balance: '', accType: '', interestRate: '', password: '' });
+  const {username} = useParams()
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -11,29 +15,28 @@ function AccountForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post('http://localhost:5000/api/accounts', account);
-      alert('Account added successfully!');
-    } catch (error) {
-      console.error('Error adding account:', error);
-      alert('Failed to add account!');
+    // Check if the first name matches the username
+    if (username === account.f_name) {
+      try {
+        await axios.post('http://localhost:5000/api/accounts', account);
+        alert('Account added successfully!');
+      } catch (error) {
+        console.error('Error adding account:', error);
+        alert('Failed to add account!');
+      }
+    } else {
+      // If the first name doesn't match the username, show an alert
+      alert('First name does not match the username.');
     }
   };
-
+  
   return (
     <form onSubmit={handleSubmit}>
       <input
-        type="number"
-        name="accountNo"
-        placeholder="Account No"
-        value={account.accountNo}
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="customerID"
-        placeholder="Customer ID"
-        value={account.customerID}
+        type="text"
+        name="f_name"
+        placeholder="First Name"
+        value={account.f_name}
         onChange={handleChange}
       />
       <input
@@ -43,22 +46,28 @@ function AccountForm() {
         value={account.balance}
         onChange={handleChange}
       />
-        <select
-    name="accType"
-    value={account.accType}
-    onChange={handleChange}
-  >
-    <option value="">Select Account Type</option>
-    <option value="Savings">Savings</option>
-    <option value="Checking">Checking</option>
-    <option value="Investment">Investment</option>
-  </select>
-
+      <select
+        name="accType"
+        value={account.accType}
+        onChange={handleChange}
+      >
+        <option value="">Select Account Type</option>
+        <option value="Savings">Savings</option>
+        <option value="Checking">Checking</option>
+        <option value="Investment">Investment</option>
+      </select>
       <input
         type="number"
         name="interestRate"
         placeholder="Interest Rate"
         value={account.interestRate}
+        onChange={handleChange}
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={account.password}
         onChange={handleChange}
       />
       <button type="submit">Add Account</button>

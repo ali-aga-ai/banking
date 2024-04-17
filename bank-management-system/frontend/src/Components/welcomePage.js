@@ -6,19 +6,19 @@ const Dashboard = () => {
   const { username } = useParams(); // Extract the username parameter from the URL
 
   const redirectToCreateAccount = () => {
-    navigate('/createAccount'); // Use navigate instead of history.push
+    navigate('/createAccount/:username'); // Use navigate instead of history.push
   };
 
   const redirectToCreateCard = () => {
-    navigate('/createCard'); // Use navigate instead of history.push
+    navigate('/createCard/:username'); // Use navigate instead of history.push
   };
 
   const redirectToApplyLoan = () => {
-    navigate('/loanApply'); // Use navigate instead of history.push
+    navigate('/loanApply/:username'); // Use navigate instead of history.push
   };
 
   const redirectToSendMoney = () => {
-    navigate('/transaction'); // Use navigate instead of history.push
+    navigate('/transaction/:username'); // Use navigate instead of history.push
   };
 
   return (

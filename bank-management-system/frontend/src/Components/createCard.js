@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 function CardForm() {
-  const [card, setCard] = useState({ cardNo: '', customerId: '', accountNo: '', cardType: '' });
+  const [card, setCard] = useState({ f_name: '', password: '', cardType: '' });
+  const { username } = useParams();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -11,45 +13,48 @@ function CardForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post('http://localhost:5000/api/cards', card);
-      alert('Card added successfully!');
-    } catch (error) {
-      console.error('Error adding card:', error);
-      alert('Failed to add card!');
+    // Check if the provided f_name matches the username
+    if (card.f_name === username) {
+      try {
+        await axios.post('http://localhost:5000/api/cards', card);
+        alert('Card added successfully!');
+      } catch (error) {
+        console.error('Error adding card:', error);
+        alert(`Failed to add card: ${error.message}`);
+      }
+    } else {
+      // If the provided f_name does not match the username, show an error
+      alert('First name does not match the username.');
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
       <input
-        type="number"
-        name="cardNo"
-        placeholder="Card Number"
-        value={card.cardNo}
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="customerId"
-        placeholder="Customer ID"
-        value={card.customerId}
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="accountNo"
-        placeholder="Account Number"
-        value={card.accountNo}
-        onChange={handleChange}
-      />
-      <input
         type="text"
+        name="f_name"
+        placeholder="First Name"
+        value={card.f_name}
+        onChange={handleChange}
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={card.password}
+        onChange={handleChange}
+      />
+      <select
         name="cardType"
-        placeholder="Card Type"
         value={card.cardType}
         onChange={handleChange}
-      />
+      >
+        <option value="">Select Card Type</option>
+        <option value="Credit">Credit</option>
+        <option value="Debit">Debit</option>
+        <option value="Prepaid">Prepaid</option>
+      </select>
       <button type="submit">Add Card</button>
     </form>
   );
