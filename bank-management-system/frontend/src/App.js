@@ -6,6 +6,7 @@ import CreateCard from "./Components/createCard";
 import LoanApply from "./Components/loanApply";
 import Transaction from "./Components/transaction";
 import Dashboard from "./Components/welcomePage";
+import AmountOwed from "./Components/amountOwed";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<div> Hello World</div>} /> */}
           <Route
-            path="/createCustomer/:username"
+            path="/createCustomer"
             element={<CreateCustomer />}
           />
           <Route path="/createAccount/:username" element={<CreateAccount />} />
@@ -22,6 +23,7 @@ function App() {
           <Route path="/loanApply/:username" element={<LoanApply />} />
           <Route path="/transaction/:username" element={<Transaction />} />
           <Route path="/welcomePage/:username" element={<Dashboard />} />
+          <Route path="/amountOwed/:username" element={<AmountOwed />} />
         </Routes>
       </div>
     </Router>

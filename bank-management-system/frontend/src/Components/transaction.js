@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
 
 function MoneyTransferForm() {
@@ -9,8 +8,8 @@ function MoneyTransferForm() {
     amount: "",
     receiverAccount: "",
   });
+  const [transactions, setTransactions] = useState([]);
   const { username } = useParams();
-
   const navigate = useNavigate();
 
   const redirectToWelcomePage = () => {
@@ -42,6 +41,18 @@ function MoneyTransferForm() {
     }
   };
 
+  const handleViewTransactions = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/transactions/${username}`
+      );
+      setTransactions(response.data.transactions);
+    } catch (error) {
+      console.error("Error fetching transactions:", error);
+      alert("Failed to fetch transactions.");
+    }
+  };
+
   return (
     <div>
       <button onClick={redirectToWelcomePage}>Home/Welcome Page</button>
@@ -62,6 +73,24 @@ function MoneyTransferForm() {
         />
         <button type="submit">Send Money</button>
       </form>
+      <div>
+        <button onClick={handleViewTransactions}>View Last 10 Transactions</button>
+        {transactions.length > 0 && (
+          <ul>
+  {transactions.map((transaction, index) => (
+    <li key={index}>
+      Transaction No: {transaction.transaction_no}, 
+      Transaction Date: {transaction.transaction_date}, 
+      Amount: {transaction.amount},
+      From Account: {transaction.acc_from},
+      To Account: {transaction.acc_to},
+      Transaction Type: {transaction.trans_type}
+    </li>
+  ))}
+</ul>
+
+        )}
+      </div>
     </div>
   );
 }

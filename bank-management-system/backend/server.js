@@ -8,7 +8,7 @@ const app = express();
 const pool = createPool({
   host: "localhost",
   user: "root",
-  password: "sqlsqlsql",
+  password: "$entropics110",
   database: "banking",
   connectionLimit: 10,
 });
@@ -28,6 +28,154 @@ app.get("/", function (req, res) {
     res.send(results);
   });
   //   res.send("Hey there you");
+});
+
+// app.post("/api/transactions", (req, res) => {
+//   const { accFrom, accTo, transactionDate, amount, transType } = req.body;
+
+//   // Here you can add logic to validate the transaction data,
+//   const insertQuery =
+//     "INSERT INTO transactions (acc_from, acc_to, transaction_date, amount, trans_type) VALUES (?, ?, ?, ?, ?)";
+//   pool.query(
+//     insertQuery,
+//     [accFrom, accTo, new Date(), amount, transType],
+//     (err, result) => {
+//       if (err) {
+//         console.error("Error inserting transaction:", err);
+//         return res.status(500).json({ error: "Failed to insert transaction" });
+//       }
+//       console.log("Transaction submitted successfully:", result);
+
+//       // Send response only once
+//       res.status(201).json({ message: "Transaction submitted successfully" });
+//     }
+//   );
+// });
+
+app.post("/api/transactions", (req, res) => {
+  const { accFrom, accTo, transactionDate, amount, transType } = req.body;
+
+  // Begin transaction to ensure consistency
+  pool.getConnection((err, connection) => {
+    if (err) {
+      console.error("Error getting database connection:", err);
+      return res.status(500).json({ error: "Database error" });
+    }
+
+    // Start transaction
+    connection.beginTransaction((beginTransactionErr) => {
+      if (beginTransactionErr) {
+        console.error("Error beginning transaction:", beginTransactionErr);
+        connection.release(); // Release connection in case of error
+        return res.status(500).json({ error: "Database error" });
+      }
+
+      // Insert transaction record
+      const insertTransactionQuery =
+        "INSERT INTO transactions (acc_from, acc_to, transaction_date, amount, trans_type) VALUES (?, ?, ?, ?, ?)";
+      connection.query(
+        insertTransactionQuery,
+        [accFrom, accTo, transactionDate, amount, transType],
+        (insertTransactionErr, insertTransactionResult) => {
+          if (insertTransactionErr) {
+            console.error("Error inserting transaction:", insertTransactionErr);
+            connection.rollback(() => {
+              console.log("Transaction rolled back due to error.");
+              connection.release(); // Release connection in case of error
+              return res
+                .status(500)
+                .json({ error: "Failed to insert transaction" });
+            });
+            return; // End processing to avoid sending multiple responses
+          }
+
+          console.log(
+            "Transaction inserted successfully:",
+            insertTransactionResult
+          );
+
+          // Update sender account balance
+          const updateSenderBalanceQuery =
+            "UPDATE account SET balance = balance - ? WHERE account_no = ?";
+          connection.query(
+            updateSenderBalanceQuery,
+            [amount, accFrom],
+            (updateSenderBalanceErr, updateSenderBalanceResult) => {
+              if (updateSenderBalanceErr) {
+                console.error(
+                  "Error updating sender account balance:",
+                  updateSenderBalanceErr
+                );
+                connection.rollback(() => {
+                  console.log("Transaction rolled back due to error.");
+                  connection.release(); // Release connection in case of error
+                  return res
+                    .status(500)
+                    .json({ error: "Failed to update sender account balance" });
+                });
+                return; // End processing to avoid sending multiple responses
+              }
+
+              console.log(
+                "Sender account balance updated successfully:",
+                updateSenderBalanceResult
+              );
+
+              // Update receiver account balance
+              const updateReceiverBalanceQuery =
+                "UPDATE account SET balance = balance + ? WHERE account_no = ?";
+              connection.query(
+                updateReceiverBalanceQuery,
+                [amount, accTo],
+                (updateReceiverBalanceErr, updateReceiverBalanceResult) => {
+                  if (updateReceiverBalanceErr) {
+                    console.error(
+                      "Error updating receiver account balance:",
+                      updateReceiverBalanceErr
+                    );
+                    connection.rollback(() => {
+                      console.log("Transaction rolled back due to error.");
+                      connection.release(); // Release connection in case of error
+                      return res.status(500).json({
+                        error: "Failed to update receiver account balance",
+                      });
+                    });
+                    return; // End processing to avoid sending multiple responses
+                  }
+
+                  console.log(
+                    "Receiver account balance updated successfully:",
+                    updateReceiverBalanceResult
+                  );
+
+                  // Commit transaction
+                  connection.commit((commitErr) => {
+                    if (commitErr) {
+                      console.error("Error committing transaction:", commitErr);
+                      connection.rollback(() => {
+                        console.log("Transaction rolled back due to error.");
+                        connection.release(); // Release connection in case of error
+                        return res
+                          .status(500)
+                          .json({ error: "Failed to commit transaction" });
+                      });
+                      return; // End processing to avoid sending multiple responses
+                    }
+
+                    console.log("Transaction committed successfully.");
+                    connection.release(); // Release connection after successful transaction
+                    return res
+                      .status(201)
+                      .json({ message: "Transaction submitted successfully" });
+                  });
+                }
+              );
+            }
+          );
+        }
+      );
+    });
+  });
 });
 
 app.post("/api/customers", (req, res) => {
@@ -82,6 +230,7 @@ app.post("/api/customers", (req, res) => {
     }
   );
 });
+
 app.post("/api/accounts", (req, res) => {
   const { f_name, password, accountNo, balance, accType, interestRate } =
     req.body;
@@ -269,5 +418,87 @@ app.post("/api/loans", (req, res) => {
   );
 });
 
+
+app.post("/api/loanAmount", (req, res) => {
+  const { username, password } = req.body;
+
+  // Check customer credentials
+  const validateQuery =
+    "SELECT customer_id FROM customer WHERE f_name = ? AND password = ?";
+  pool.query(validateQuery, [username, password], (validateErr, validateResult) => {
+    if (validateErr) {
+      console.error("Error validating customer credentials:", validateErr);
+      return res
+        .status(500)
+        .json({ error: "Failed to validate customer credentials" });
+    }
+
+    if (validateResult.length === 0) {
+      // If no matching customer found
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    // If credentials are valid, proceed to call the stored procedure
+    const customerId = validateResult[0].customer_id;
+    console.log("Customer ID:", customerId);
+
+    // Call the stored procedure to calculate the loan amount
+    const query = "CALL CalculateLoanAmount(?, @total_amount)";
+    pool.query(query, [customerId], (err) => {
+      if (err) {
+        console.error("Error calling stored procedure:", err);
+        return res.status(500).json({ error: "Failed to calculate loan amount" });
+      }
+
+      // Retrieve the calculated loan amount from the session variable
+      const selectQuery = "SELECT @total_amount AS total_amount";
+      pool.query(selectQuery, (selectErr, selectResult) => {
+        if (selectErr) {
+          console.error("Error retrieving loan amount:", selectErr);
+          return res.status(500).json({ error: "Failed to retrieve loan amount" });
+        }
+
+        const loanAmount = selectResult[0].total_amount;
+        console.log("Fetched Loan Amount:", loanAmount);
+        res.status(200).json({ loan_amount: loanAmount });
+      });
+    });
+  });
+});
+
+// GET route for fetching the last 10 transactions
+app.get("/api/transactions/:username", (req, res) => {
+  const username = req.params.username;
+  
+  // Query to fetch the customer ID based on the username
+  const customerIdQuery = "SELECT customer_id FROM customer WHERE f_name = ?";
+  
+  // Execute the query to get the customer ID
+  pool.query(customerIdQuery, [username], (err, results) => {
+    if (err) {
+      console.error("Error fetching customer ID:", err);
+      return res.status(500).json({ error: "Failed to fetch customer ID" });
+    }
+    
+    // Extract the customer ID from the results
+    const customerId = results[0].customer_id;
+    
+    // Call the stored procedure to fetch the last 10 transactions
+    const transactionQuery = "CALL GetLast10Transactions(?)";
+    pool.query(transactionQuery, [customerId], (err, results) => {
+      if (err) {
+        console.error("Error fetching transactions:", err);
+        return res.status(500).json({ error: "Failed to fetch transactions" });
+      }
+      
+      // Extract the transactions from the results
+      const transactions = results[0];
+      
+      // Send the retrieved transactions as JSON response
+      res.json({ transactions });
+    });
+  });
+});
 const PORT = 8080;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
