@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate  } from 'react-router-dom';
-
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CustomerForm() {
   const navigate = useNavigate();
 
-  const [customer, setCustomer] = useState({ firstName: '', middleName: '', lastName: '', creditScore: '', address: '', contactNumber: '' , password:''});
+  const [customer, setCustomer] = useState({
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    creditScore: "",
+    address: "",
+    contactNumber: "",
+    password: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,13 +23,12 @@ function CustomerForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/customers', customer);
-      alert('Customer added successfully!');
-      navigate(`/welcomePage/${customer.firstName}`)
-
+      await axios.post("http://localhost:8080/api/customers", customer);
+      alert("Customer added successfully!");
+      navigate(`/welcomePage/${customer.firstName}`);
     } catch (error) {
-      console.error('Error adding customer:', error);
-      alert('Failed to add customer!');
+      console.error("Error adding customer:", error);
+      alert("Failed to add customer!");
     }
   };
 
