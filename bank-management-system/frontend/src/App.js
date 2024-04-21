@@ -7,6 +7,7 @@ import LoanApply from "./Components/loanApply";
 import Transaction from "./Components/transaction";
 import Dashboard from "./Components/welcomePage";
 import AmountOwed from "./Components/amountOwed";
+import TransactionFinal from "./Components/transaction_final";
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
           <Route path="/createAccount/:username" element={<CreateAccount />} />
           <Route path="/createCard/:username" element={<CreateCard />} />
           <Route path="/loanApply/:username" element={<LoanApply />} />
-          <Route path="/transaction/:username" element={<Transaction />} />
+          {/* <Route path="/transaction/:username" element={<Transaction />} /> */}
+          <Route path="/transaction/:username" element={<TransactionFinal />} />
+
           <Route path="/welcomePage/:username" element={<Dashboard />} />
           <Route path="/amountOwed/:username" element={<AmountOwed />} />
         </Routes>
