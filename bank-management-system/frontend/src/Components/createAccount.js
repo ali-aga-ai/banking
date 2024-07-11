@@ -1,20 +1,58 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
-
 import axios from "axios";
+import styled from "styled-components";
+
+const FormContainer = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+const Button = styled.button`
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #45a049;
+  }
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+const Select = styled.select`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
 
 function AccountForm() {
   const [account, setAccount] = useState({
-    f_name: "",
     balance: "",
     accType: "",
     interestRate: "",
-    password: "",
   });
+  const [accountNo,setAccountNo] = useState("")
   const { username } = useParams();
-
   const navigate = useNavigate();
 
   const redirectToWelcomePage = () => {
@@ -27,65 +65,52 @@ function AccountForm() {
   };
 
   const handleSubmit = async (e) => {
-    // console.log("Username:", username);
-    // console.log("Account First Name:", account.f_name);
-
     e.preventDefault();
-    // Check if the first name matches the username
-    if (username === account.f_name) {
-      try {
-        await axios.post("http://localhost:8080/api/accounts", account);
-        alert("Account added successfully!");
-      } catch (error) {
+  
+    try {
+      const response = await axios.post("http://localhost:8000/createAccount", account);
+      setAccountNo(response.accountNo)
+      alert("Account added successfully!");
+    } catch (error) {
+      if (error.response && error.response.status === 409) {
+        alert("An account of this type already exists for the customer.");
+      } else {
         console.error("Error adding account:", error);
         alert("Failed to add account!");
       }
-    } else {
-      // If the first name doesn't match the username, show an alert
-      alert("First name does not match the username.");
     }
   };
+  
 
   return (
     <div>
-      <button onClick={redirectToWelcomePage}>Home/Welcome Page</button>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="f_name"
-          placeholder="First Name"
-          value={account.f_name}
-          onChange={handleChange}
-        />
-        <input
+      <Button onClick={redirectToWelcomePage}>Home/Welcome Page</Button>
+      <FormContainer onSubmit={handleSubmit}>
+        
+        <Input
           type="number"
           name="balance"
           placeholder="Balance"
           value={account.balance}
           onChange={handleChange}
         />
-        <select name="accType" value={account.accType} onChange={handleChange}>
+        <Select name="accType" value={account.accType} onChange={handleChange}>
           <option value="">Select Account Type</option>
           <option value="Savings">Savings</option>
           <option value="Checking">Checking</option>
           <option value="Investment">Investment</option>
-        </select>
-        <input
+        </Select>
+        <Input
           type="number"
           name="interestRate"
           placeholder="Interest Rate"
           value={account.interestRate}
           onChange={handleChange}
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={account.password}
-          onChange={handleChange}
-        />
-        <button type="submit">Add Account</button>
-      </form>
+    
+        <Button onClick={handleSubmit}>Add Account</Button>
+        {accountNo && <div>{accountNo}</div>}
+      </FormContainer>
     </div>
   );
 }

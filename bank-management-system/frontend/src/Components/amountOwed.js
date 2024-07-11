@@ -1,17 +1,47 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+const FormContainer = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+const Button = styled.button`
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #45a049;
+  }
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
 
 function AmountOwed() {
-  const [password, setPassword] = useState("");
   const [owedAmount, setOwedAmount] = useState(null);
   const { username } = useParams();
   const navigate = useNavigate();
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
+ 
   const redirectToWelcomePage = () => {
     navigate(`/welcomePage/${username}`);
   };
@@ -19,11 +49,7 @@ function AmountOwed() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send username and password to the server to fetch the owed amount
-      const response = await axios.post("http://localhost:8080/api/loanAmount", {
-        username: username,
-        password: password
-      });
+      const response = await axios.post("http://localhost:8000/loan/loanedAmountFetch");
       const data = response.data;
       if (response.status === 200) {
         setOwedAmount(data.loan_amount);
@@ -39,16 +65,11 @@ function AmountOwed() {
 
   return (
     <div>
-      <button onClick={redirectToWelcomePage}>Home/Welcome Page</button>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <button type="submit">Fetch Owed Amount</button>
-      </form>
+      <Button onClick={redirectToWelcomePage}>Home/Welcome Page</Button>
+      <FormContainer onSubmit={handleSubmit}>
+        
+        <Button onClick={handleSubmit}>Fetch Owed Amount</Button>
+      </FormContainer>
       {owedAmount !== null && <p>Owed Amount: {owedAmount}</p>}
     </div>
   );

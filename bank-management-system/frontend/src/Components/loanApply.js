@@ -1,20 +1,55 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+const FormContainer = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+const Title = styled.h2`
+  text-align: center;
+  margin-bottom: 20px;
+`;
+
+const Button = styled.button`
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #45a049;
+  }
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
 
 function LoanForm() {
   const [loan, setLoan] = useState({
-    username: "",
-    password: "",
+    
     amount: "",
-    collateral: "",
     interest: "",
     timeMonths: "",
   });
   const { username } = useParams();
-
   const navigate = useNavigate();
 
   const redirectToWelcomePage = () => {
@@ -28,69 +63,48 @@ function LoanForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Check if the provided username matches the username in the URL
-    if (username === loan.username) {
+    
       try {
-        await axios.post("http://localhost:8080/api/loans", loan);
+        await axios.post("http://localhost:8000/loan/loanApply", loan);
         alert("Loan application submitted successfully!");
       } catch (error) {
         console.error("Error submitting loan application:", error);
         alert("Failed to submit loan application!");
       }
-    } else {
-      // If the provided username doesn't match the one in the URL, show an error
-      alert("Username does not match the URL.");
-    }
+      
   };
 
   return (
     <div>
-      <button onClick={redirectToWelcomePage}>Home/Welcome Page</button>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={loan.username}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={loan.password}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="amount"
-          placeholder="Loan Amount"
-          value={loan.amount}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="collateral"
-          placeholder="Collateral"
-          value={loan.collateral}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="interest"
-          placeholder="Interest Rate"
-          value={loan.interest}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="timeMonths"
-          placeholder="Loan Term (Months)"
-          value={loan.timeMonths}
-          onChange={handleChange}
-        />
-        <button type="submit">Apply for Loan</button>
-      </form>
+      <Button onClick={redirectToWelcomePage}>Home/Welcome Page</Button>
+      <FormContainer>
+        <Title>Apply for Loan</Title>
+        <form onSubmit={handleSubmit}>
+          
+          <Input
+            type="number"
+            name="amount"
+            placeholder="Loan Amount"
+            value={loan.amount}
+            onChange={handleChange}
+          />
+          <Input
+            type="number"
+            name="interest"
+            placeholder="Interest Rate"
+            value={loan.interest}
+            onChange={handleChange}
+          />
+          <Input
+            type="number"
+            name="timeMonths"
+            placeholder="Loan Term (Months)"
+            value={loan.timeMonths}
+            onChange={handleChange}
+          />
+          <Button onClick={handleSubmit}>Apply for Loan</Button>
+        </form>
+      </FormContainer>
     </div>
   );
 }

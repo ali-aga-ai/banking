@@ -1,0 +1,391 @@
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Documents\code\databases\banking\Bank-management-System\bank-management-system\backend\createCustomer.js:57:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Object.<anonymous> (C:\Users\alima\AppData\Roaming\nvm\v16.20.2\node_modules\pm2\lib\ProcessContainerFork.js:33:23) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}

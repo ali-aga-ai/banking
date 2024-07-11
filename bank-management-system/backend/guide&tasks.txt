@@ -1,0 +1,41 @@
+if u wanna create account cards etc u first need to set up a customer id or login so u get token
+
+admin page
+-- correct deposit money (Sql some trigger based issue i assume)
+-- notification when a clinet is unable to pay his dues a particular month for emi
+-- make admin secure...2 step authentication only verified users can access (2 step auth with email id)
+
+loans
+-- for loans add an emi system where automatically money deducted from client (when applying loan set a emi option in the combo box if it is selected... calculate emi (in another file as middleware) monthly payments and if users current account balance is less than that show a warning) (this will help u work with dates in JS cuz monthly deductions )
+-- notification sent when money deducted(emi payment) or received(when loan approved).....along side this give reason for transaction
+-- on client side create a loan status page which shows previous loans pending or approved
+-- restructure by adding loan approval status, date, paid amount
+-- user must not be able to choose interest rate
+-- set limit to number of loan applications a person can send
+-- error if no savings account
+
+transactions 
+-- notification when money deducted (notif comes on home page).....along side this give reason for transaction
+
+accounts
+-- automatically an account is created on creating a customer which requires auto increment (auto creation with trigger)
+
+
+
+
+
+have good errors (especially for account and card creation) and redirection and ux
+
+add feature such that loaned aount etch can come loan by loan date by date
+
+
+
+make admin secure 
+
+user must not be able to choose interest rate (last)
+
+transview ui
+
+figure amount deposited issue etc
+
+much later... figure out cookies expiry

@@ -61,6 +61,11 @@ const Dashboard = () => {
     navigate(`/amountOwed/${username}`);
   };
 
+  const redirectToLoanStatus = () =>{
+    navigate(`/loanStatus/${username}`);
+
+  }
+
   return (
     <DashboardContainer>
       <Heading>Welcome {username}</Heading>
@@ -70,6 +75,7 @@ const Dashboard = () => {
         <Button onClick={redirectToApplyLoan}>Apply Loan</Button>
         <Button onClick={redirectToSendMoney}>Send Money</Button>
         <Button onClick={redirectToOwedMoney}>How much I owe?</Button>
+        <Button onClick={redirectToLoanStatus}>Loan Status</Button>
       </ButtonContainer>
     </DashboardContainer>
   );

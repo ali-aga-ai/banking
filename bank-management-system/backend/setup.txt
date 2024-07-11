@@ -1,0 +1,12 @@
+I created a file called setup.js to hold all the basic setup code for our Node.js servers. This file sets up things like connecting to the database and configuring the server. 
+Then, in each of our other files where we want to run a server, we simply import the app and pool from setup.js.
+Also, to make it easier to manage multiple servers, we use a tool called PM2, which lets us start, stop, and manage all our servers at once using a simple command.
+
+
+
+Use PM2 to Manage Servers:
+
+Install PM2 globally (npm install -g pm2).
+
+i have used ports from 8080 to 8084 (inclusive)...sharing compute between servers is called load balancing
+
